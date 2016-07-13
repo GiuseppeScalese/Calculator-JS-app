@@ -1,0 +1,137 @@
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+	&__content {
+	    background-color: $offwhite;
+	    padding: 30px 17px 25px;
+	    @include rounded-corners(5px);
+	    top: 0;
+	    left: 0;
+	    bottom: 0;
+	    right: 0;
+	    width: 80%;
+	    height: 230px;
+	    overflow: auto;
+	    margin: auto;
+	    position: absolute;
+
+		@include tablets{
+			height: 293px;
+ 		}
+
+	    @include small-desktop{
+			width: 620px;
+			height: 298px;
+ 		}	
+
+	    .modal-get-maths{
+			width: 100%;
+			margin-top: 10px;
+			border: 1px solid $black;
+			padding-left: 10px;
+			height: 37px;
+			@include font-size(13px);
+			@include rounded-corners(5px);
+
+			@include tablets{
+				@include font-size(20px);
+				margin-top: 20px;
+				height: 45px;
+ 			}
+
+			@include small-desktop{
+				@include font-size(20px);
+				height: 50px;
+				margin-top: 22px;
+ 			}
+	    }
+
+	    .modal-label{
+			color: $black;
+			margin-top: 20px;
+			@include font-size(18px);
+			display: block;
+
+			@include tablets{
+				@include font-size(25px);
+				margin-top: 27px;
+ 			}
+
+			@include small-desktop{					
+				@include font-size($text-size--large);
+				margin-top: 15px;
+ 			}
+	    }
+
+	    .modal-message{
+	    	color: $warning-message-color;
+	    	@include font-size(14px);
+	    	padding-top: 10px;
+	    	display: none;
+	    
+	    	@include tablets{
+				@include font-size(18px);
+				padding-top: 10px;
+ 			}
+
+	    	@include small-desktop{
+	    		padding-top: 12px;
+				@include font-size(20px);
+ 			}
+	    }
+
+	    .modal-buttons{
+	    	position: absolute;
+	    	bottom: 20px;
+	  
+			.button-submit, .button-cancel{
+				@extend .btn;
+				outline: 0;
+
+				@include tablets{
+					@include font-size(14px);
+ 				}
+
+				@include small-desktop{
+					@include font-size($text-size--small);
+ 				}
+			}
+
+			.button-submit{
+				margin-right: 15px;
+
+				@include tablets{
+					margin-right: 30px;
+	 			}
+
+				@include small-desktop{
+					margin-right: 30px;
+	 			}
+			}
+	    }
+
+		.modal-close {
+		    color: $orange;
+		    float: right;
+		    @include font-size($text-size--x-large);
+		    position: relative;
+		    top: -30px;
+		    right: 0px;
+		}
+
+		.modal-close:hover,
+		.modal-close:focus {
+		    color: $anchor-hover-color;
+		    text-decoration: none;
+		    cursor: pointer;
+		}
+	}
+}

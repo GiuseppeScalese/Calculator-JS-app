@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculator prototype</title>
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+</script>
+<![endif]-->
+
+<!-- Internet Explorer 8 or older versions doesn't support CSS3 media queries. I enable it by importing css3-mediaqueries.js Javascript file. -->
+<!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+
+<!-- importing custom css -->
+<link rel="stylesheet" href="./css/main.css"/>
+
+</head>
+<body>
+  <div id="wrapper">
+    <div id="main">
+      <h1 class="header">Calculator Prototype</h1>
+      <div class="error-message"></div>
+      <div class="calculator-panel">
+        <form action="/" id="calculator-form">
+          <div class="calculator-panel__digits" tabindex="1">
+            <div class="calculator-display">
+              <label for="calc-display" class="visually-hidden">Calculator display</label>
+              <input autocomplete="off" id="calc-display" class="display-result" title="Calculator display" type="text" value="0" disabled>
+            </div>
+            <div class="numbers">
+              <button type="button" value="7">7</button>
+              <button type="button" value="8">8</button>
+              <button type="button" value="9">9</button>
+              <button type="button" value="4">4</button>
+              <button type="button" value="5">5</button>
+              <button type="button" value="6">6</button>
+              <button type="button" value="1">1</button>
+              <button type="button" value="2">2</button>
+              <button type="button" value="3">3</button>
+              <button type="button" class="penultimate" value="0">0</button>
+              <button type="button" value=".">.</button>
+              <div class="inner-box-functions">
+                <button type="button" class="save" value="S">Save</button>
+                <button type="button" class="cancel" value="C">Cancel</button>
+              </div>
+              <div class="inner-box-operators">
+                <button type="button" value="+">+</button>
+                <button type="button" value="-">-</button>
+                <button type="button" value="*">*</button>
+                <button type="button" value="/">/</button>
+              </div>
+              <button type="button" class="equal-button" value="=">=</button>
+            </div>
+            <div class="saved-maths-box">
+              <h2>Saved Maths</h2>
+              <ul class="saved-maths-box__list"></ul>
+            </div>
+          </div>
+        </form>
+        
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal__content">
+            <span class="modal-close">x</span>
+            <label class="modal-label" for="maths-content">Please submit a maths name</label>
+            <input autocomplete="off" class="modal-get-maths" id="maths-content" title="Enter maths name" type="text" placeholder="Please enter a maths name">
+            <div class="modal-message"></div>
+            <div class="modal-buttons">
+               <input type="button" class="button-submit btn--orange btn--large" value="Submit">
+               <input type="button" class="button-cancel btn--orange btn--large" value="Cancel">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- importing jquery library -->
+  <script src="./js/vendor_libs/jquery-1.11.2.min.js" ></script>
+
+  <!-- importing custom script file -->
+  <script src="./js/main.js" ></script>
+</body>
+</html>
+
+
+

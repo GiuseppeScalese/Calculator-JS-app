@@ -1,0 +1,52 @@
+//Button style global
+
+.btn {
+	display: inline-block;
+	padding: .938em 1.875em;
+	border: .094em solid; 
+	@include rounded-corners(.625em);
+	@include trans(0.2s ease-in-out); 
+	box-shadow: 0 .375em .313em -.313em rgba(black,.8), inset 0 .063em $white, inset 0 -.188em rgba(black,.15);
+	font-weight: bold;
+	font-family: sans-serif, Verdana, Helvetica, Arial;
+	color: $white;
+	text: {
+		transform: uppercase;
+		decoration: none;
+		shadow: 0 .063em rgba(black,.3);
+	}
+  	cursor:pointer;
+
+  	//Themes 
+	&--purple {
+		@include btn-theme($purple);
+	}
+
+	&--blue {
+		@include btn-theme($blue);
+	}
+ 
+	&--green {
+		@include btn-theme($green);
+	}
+
+	&--orange {
+		@include btn-theme($orange);
+	}
+
+	&--small {
+    	font-size: 50%;
+	}
+
+	&--medium {
+	   	font-size: 70%;
+	}
+
+	&--large {
+	    font-size: 90%;
+	}
+}
+
+
+
+

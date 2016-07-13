@@ -1,0 +1,300 @@
+.calculator-panel{
+	margin: 7px;
+	position: absolute;
+	bottom: 0;
+	left: 20px;
+	right: 20px;
+
+	&__digits{
+		margin: 20px auto;
+		width: 90%;
+		height: 495px;
+
+		@include tablets{
+			position: relative;
+			height: 500px;
+		}
+
+		@include small-desktop{
+			position: relative;
+			height: 515px;
+		}
+
+		.equal-button{
+			width: 100%;
+
+			@include tablets{
+				width: 13.5%;
+				position: absolute;
+				right: -13.5%;
+ 			}
+		}
+
+		.calculator-display{
+
+			.display-result{
+				width: 100%;
+				margin: 0px;
+				border: 1px solid $black;
+				background: $white;
+				color: $black;
+				text-align: right;
+				height: 55px;
+				@include font-size(34px);
+				@include rounded-corners(5px);
+				padding: 10px;
+			}
+
+			.visually-hidden {
+			  border: 0;
+			  clip: rect(0 0 0 0);
+			  height: 1px;
+			  margin: -1px;
+			  overflow: hidden;
+			  padding: 0;
+			  position: absolute;
+			  width: 1px;
+			}
+
+		}
+
+		button{
+			width: 33.3333%;
+			height: 40px;
+			border: 1px solid $medium-grey;
+			font-weight: bold;
+			@include font-size(13px);
+			background: $faint-grey;
+			font-family: $base-font-family;
+
+			@include tablets{
+				height: 50px;
+				@include font-size(17px);
+		 	}
+
+		 	@include small-desktop{
+		 		height: 60px;
+				@include font-size(18px);
+		 	}
+		}
+
+		button:focus{
+			outline:0;
+		}
+
+		button:hover{
+			cursor:pointer;
+		}
+
+		.numbers{
+			width:100%;
+			padding-top: 20px;
+			position:relative;
+			font-size: 0;
+
+			@include tablets{
+				width: 88%;
+ 			}
+
+ 			@include small-desktop{
+ 				width: 60%;
+ 			}
+
+			.penultimate{
+			 	display:block;
+			}
+
+			.inner-box-functions{
+				position: absolute;
+				right: 0;
+				bottom: -40px;
+				width: 100%;
+
+				@include tablets{
+				    bottom: 0px;
+				    width: 66.6666%;
+				    height: 100px;
+	 			}
+
+	 			@include small-desktop{
+	 				bottom: -60px;
+	 			}
+
+			   	.save{
+					width:60%;
+
+					@include tablets{
+				    	width: 50%;
+	 				}
+
+	 				@include small-desktop{
+	 					width: 50%;
+	 				}
+			    }
+
+			    .cancel{
+					width:40%;
+					@include tablets{
+						width: 50%;
+					}
+
+					@include small-desktop{
+	 					width: 50%;
+	 				}
+			    }
+
+			    button{
+			    	width: 90px;
+			    	height: 40px;
+
+			    	@include tablets{
+					    height: 100px;
+	 				}
+
+	 				@include small-desktop{
+	 					height: 60px;
+	 				}
+			    }
+			 }
+
+			.inner-box-operators{
+				position: absolute;
+				right: 0;
+				bottom: 40px;
+				width: 66.6666%;
+
+				@include tablets{
+					position: absolute;
+				    right: -20.9%;
+				    bottom: 40px;
+				    width: 20.9%;
+				    bottom: 50px;
+	 			}
+
+	 			@include small-desktop{
+			 		bottom: 60px;
+			 	}
+
+				button{
+					width: 50%;
+
+					@include tablets{
+					    width: 65%;
+	 				}
+				}
+			}
+		}
+
+		.saved-maths-box{
+			background:$grey;
+			height: 170px;
+			text-align:center;
+			padding-top: 45px;
+			overflow-y: auto;
+
+			@include tablets{
+				padding-top: 0;
+		 	}
+
+		  	@include small-desktop{
+				position: absolute;
+				top: 75px;
+				right: 0;
+				width: 40%;
+				height: 420px;
+				padding-top: 0;
+			}
+
+		  	h2{
+		    	padding-top:40px;
+		    	@include font-size(23px);
+
+		    	@include tablets{
+					@include font-size($text-size--large);
+		 		}
+
+		    	@include small-desktop{
+					@include font-size(31px);
+		 		}
+		  	}
+
+		  	&__list{
+		  		@include tablets{
+					padding-top: 5px;
+		 		}
+
+		  		@include small-desktop{
+					padding-top: 10px;
+		 		}
+
+		  		li{
+		  			@extend %clearfix;
+		  			text-align: left;
+					margin: 0 8px;
+					border-bottom: 2px solid $dark-grey;
+					white-space: nowrap;
+
+					@include tablets{
+						@include font-size(14px);
+						
+						margin: 0 15px;
+		 			}
+
+					@include small-desktop{
+						@include font-size($text-size--small);
+						margin: 0 10px;
+		 			}
+
+					.view-maths{
+						padding: 5px 15px 5px 0;
+						display: inline-block;
+						text-align: left;
+						width: 74%;
+						border-right: 2px solid $dark-grey;
+						line-height: 23px;
+						
+						@include tablets{
+							width: 76%;
+							padding: 7px 15px 7px 0;
+		 				}
+
+		 				@include small-desktop{
+							width: 75%;
+							padding: 9px 15px 9px 0;
+		 				}
+					}
+
+					.view-maths, .delete-maths{
+						cursor: pointer;
+						white-space: normal;
+						vertical-align: middle;
+					}
+
+					.view-maths:hover, .delete-maths:hover{
+						color: $anchor-hover-color;
+							@include hover-transition(color, $hover-anchor-transition_speed);
+					}
+
+			  		.result-maths{
+			  			display: none;
+			  		}
+
+			  		.delete-maths{
+			  			display: inline-block;
+			  			text-align: center;
+			  			margin: 0 2%;
+			  			width: 23%;
+
+			  			@include tablets{
+							width: 21%;
+		 				}
+			  		}
+			  	}
+
+			  	li:last-child{
+			  		border-bottom: 0;
+			  	}
+		  	}
+		}
+	}
+}

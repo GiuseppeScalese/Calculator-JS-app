@@ -1,0 +1,23 @@
+@include font-face($custom-font-one, "../fonts", $custom-font-one);
+@include font-face($custom-font-two, "../fonts", $custom-font-two);
+
+body{
+  color:$base-font-color--white;
+  background: $bg-color--very-light-grey;
+  font-family: $base-font-family;
+}
+
+#wrapper{
+  max-width: $desktop-screen--x-large;
+  margin: 0 auto;
+  width: 95%;
+  padding-top: 30px;
+
+  @include tablets{
+	   width: 90%;
+  }
+
+  @include small-desktop{
+    width: 85%;
+  }
+}

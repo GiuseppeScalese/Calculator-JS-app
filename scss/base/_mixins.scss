@@ -1,0 +1,125 @@
+//Link hover transition mixin
+@mixin hover-transition($color, $transition_speed){
+  -webkit-transition: color $transition_speed ease,text-decoration $transition_speed ease ;
+  -moz-transition: color $transition_speed ease,text-decoration $transition_speed ease ;
+  -o-transition: color $transition_speed ease,text-decoration $transition_speed ease ;
+  -ms-transition: color $transition_speed ease,text-decoration $transition_speed ease ;
+  transition: color $transition_speed ease, text-decoration $transition_speed ease ;
+}
+
+
+//buttons style and buttons states mixins
+@mixin btn-theme($btn-color){
+   border-color: darken($btn-color, 20%);
+   background-color: $btn-color;
+
+   &:hover {
+      background-color: darken($btn-color, 6%);
+      box-shadow: 0 .125em $white, inset 0 .063em  $white, inset 0 -0.188em lighten($btn-color, 2%);
+   }
+   &:active {
+     box-shadow: 0 .063em $white, inset 0 0 1.094em darken($btn-color, 40%), inset 0 .063em darken($btn-color, 20%),inset 0 -0.188em darken($btn-color, 20%); 
+  }
+}
+
+//mixing for colour gradient
+@mixin linearGradient($top, $bottom){
+    background: $top; /* Old browsers */
+    background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+//mixin for rounded corners
+@mixin rounded-corners($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+//mixin for transitions
+@mixin trans($val...){
+  -webkit-transition: $val;
+  -moz-transition: $val;
+  -o-transition: $val;
+  transition: $val;
+}
+
+//media queries mixins
+@mixin phone{
+	@media screen and (max-width: #{$mobile-width-min}) {
+		@content;
+	}
+}
+
+@mixin tablets{
+	@media screen and (min-width: #{$mobile-width-min}) and (max-width: #{$small-desktop-width}) {
+  		@content;
+	}
+}
+
+@mixin small-desktop{
+  @media screen and (min-width: #{$small-desktop-width}) {
+      @content;
+  }
+}
+
+@mixin large-desktop{
+  @media screen and (min-width: #{$large-desktop-width }) {
+      @content;
+  }
+}
+
+
+//clearfix
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+//text mixin
+@mixin text($size, $line, $family: $base-font-family) {
+    @include font-size($size);
+    line-height: ($line/$size);
+    font-family: $family;
+}
+
+//font-size mixin - Fallback when pixel isn't supported in IE8 and below
+@function calculateRem($size) {
+  $remSize: $size / $base-font-size;
+  @return #{$remSize}rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+
+//font face mixin
+@mixin font-face($font-face-family, $folder, $font-face-filename, $font-face-weight : normal, $font-face-style :normal, $font-stretch : normal) {
+  @font-face {
+    font-family: $font-face-family;
+    src: url('#{$folder}/#{$font-face-filename}.otf') format("opentype");
+    font-style: $font-face-style;
+    font-weight: $font-face-weight;
+  }
+}
+
+//font face mixin
+@mixin font-face-icons($font-face-family, $folder, $font-face-filename, $font-face-weight : normal, $font-face-style :normal, $font-stretch : normal) {
+  @font-face {
+    font-family: $font-face-family;
+    src: url('#{$folder}/#{$font-face-filename}.ttf') format("truetype");
+    src: url('#{$folder}/#{$font-face-filename}.svg') format("svg");
+    src: url('#{$folder}/#{$font-face-filename}.woff') format("woff");
+    src: url('#{$folder}/#{$font-face-filename}.eof'); /* IE9 Compat Modes */
+    font-style: $font-face-style;
+    font-weight: $font-face-weight;
+  }
+}

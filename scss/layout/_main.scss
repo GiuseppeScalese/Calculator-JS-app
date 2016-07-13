@@ -1,0 +1,48 @@
+#main{
+	height: 630px;
+	@include rounded-corners(5px);
+	position: relative;
+	@include linearGradient($medium-grey, $very-light-grey);
+
+	@include tablets{
+	 	height: 655px;
+	}
+
+	@include small-desktop{
+	 	height: 680px;
+	}
+
+	.header{
+		text-align: center;
+		padding-top: 30px;
+		margin-bottom: 23px;
+		color: $white;
+		@include font-size(26px);
+		
+		@include tablets{
+	 		@include font-size(34px);
+	 		margin-bottom: 23px;
+		}
+
+		@include small-desktop{
+			padding-top: 30px;
+			margin-bottom: 28px;
+	 		@include font-size(40px);
+		}
+	}
+
+	.error-message{
+		display: none;
+		color: $warning-message-color;
+		@include font-size(18px);
+		text-align: center;
+
+		@include tablets{
+	 		@include font-size(25px);
+		}
+
+		@include small-desktop{
+	 		@include font-size(27px);
+		}
+	}
+}

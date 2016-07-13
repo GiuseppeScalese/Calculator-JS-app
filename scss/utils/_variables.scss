@@ -1,0 +1,94 @@
+//Colours variables
+$primary-color:#707070;
+$secondary-color:#a0a0a0;
+$black: #000000;
+$white: #ffffff;
+$offwhite: #fefefe;
+$very-light-grey: #DBDBDB;
+$light-grey: #D3D3D3;
+$faint-grey: #b9b9b9;
+$soft-grey: #aaaaaa;
+$medium-grey: #9EAABB;
+$dark-grey: #102a3e;
+$grey: #9a9a9a;
+$light-blue: #4D6FAC;
+$night-blue: #1B3F8B;
+$orange-salmon: #FF8C69;
+
+//anchor tag colours
+$anchor-color--light-green:#72cac8;
+$anchor-color--white:#ffffff;
+$anchor-color--light-blue:#819aaf;
+$anchor-hover-color:#1B3F8B;
+
+//header component colours
+$border-nav-color:#d3d3d3;
+$nav-header-separator-color:#6495ED;
+$preview-separator-color:#32313f;
+$main-content-separator-color:#d3d3d3;
+$search-section-border-color:#9a9a9a;
+
+//warning colour
+$warning-message-color:#cc0000;
+
+//heading colours
+$primary-heading-colour: #ffffff;
+$secondary-heading-colour: #000000;
+
+//background colours
+$bg-color--black:#000000;
+$bg-color--white:#ffffff;
+$bg-color--light-green:#72cac8;
+$bg-color--dark-grey:#525252;
+$bg-color--light-grey:#d3d3d3;
+$bg-color--very-light-grey:#DBDBDB;
+$bg-color--super-light-grey:#e8eff4;
+$bg-color--white:#ffffff;
+$bg-color--mild-blue:#1B3F8B;
+$bg-color--light-blue:#4D6FAC;
+$bg-color--night-blue: #000034;
+$bg-color--very-dark-blue:#0f0e1e;
+$bg-color--mild-green:#2A8E82;
+
+//font type
+$custom-font-one:'LeagueGothic-Regular';
+$custom-font-two:'LeagueGothic-Italic';
+$custom-icons:'weathericons-regular-webfont';
+
+//base font variables
+$base-font-family: Verdana, Helvetica, sans-serif, Arial;
+$custom-font-family: $custom-font-one, Verdana, Helvetica, sans-serif, Arial;
+$base-font-color--white:#ffffff;
+$base-font-size: 10px;
+$text-size--x-small: 12px;
+$text-size--small: 15px;
+$text-size--medium: 24px;
+$text-size--large: 30px;
+$text-size--very-large: 36px;
+$text-size--x-large: 40px;
+$text-size--xx-large: 55px;
+$text-size--xxx-large: 75px;
+$base_line: 20px;
+$text_line--small: 20px;
+$text_line--medium: 30px;
+$text_line--large: 36px;
+$text_line--very-large: 40px;
+$text-color-base:#000000;
+
+//buttons colours
+$purple: #9A68C7;
+$blue: #3BA9E4;
+$green: #75B343;
+$orange: #FF6A42;
+
+//hover anchor transition speed variable
+$hover-anchor-transition_speed: .4s;
+
+//screen size variables
+$desktop-screen--large: 980px;
+$desktop-screen--x-large: 1280px;
+
+//media queries variables
+$mobile-width-min: 480px;
+$small-desktop-width: 980px;
+$large-desktop-width: 1200px;

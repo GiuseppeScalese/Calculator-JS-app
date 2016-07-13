@@ -1,0 +1,81 @@
+//Form elements style global
+
+form{
+  font-size:1.2em; 
+  width:100%;
+
+  textarea{
+	  display: block;
+	  margin: 20px 0;
+	  width: 100%;
+	  height: 200px;
+	  padding: 10px;
+  }
+
+  select{
+	padding: 13px;
+	-webkit-appearance: menulist-button;
+	height: 45px;
+  } 
+
+  input{
+	&[type="checkbox"], &[type="radio"]{
+		display: none;
+	 + label{
+		position: relative;
+		cursor: pointer;
+		vertical-align: middle;
+	 }
+		&:before{
+			content: "";
+			border: 1px solid gray;
+			background-color: white;
+			border-radius: 50%;
+			width: 17px;
+			height: 17px;
+			display: inline-block;
+			vertical-align: middle;
+			margin-right: 5px;
+		}
+	}
+			
+	&[type="checkbox"]{
+	 	+ label{
+			&:before{
+				border-radius: 0;
+				margin-right: 10px;
+			}
+		}
+	}
+			
+	&:checked{
+		+ label:after{
+			content: "";
+			background-color: green;
+			border-radius: 50%;
+			width: 9px;
+			height: 9px;
+			position: absolute;
+			left: 5px;
+			top: 5px;
+		}
+	}
+	/* Fix for Safari as it doesn't render well input search types */
+	&[type="search"]{
+	   -moz-appearance:none;
+       -webkit-appearance:none;
+	}
+			
+	&[type="text"],
+	&[type="search"],
+	&[type="password"],
+	&[type="number"]{
+		padding: 13px; 
+		border: solid 1px #a4a4a4;
+	}
+  }
+}
+
+
+
+

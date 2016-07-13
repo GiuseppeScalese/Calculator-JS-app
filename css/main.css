@@ -1,0 +1,658 @@
+.calculator-panel__digits .saved-maths-box__list li:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+/* CSS Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+html {
+  font-size: 10px; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a, u {
+  text-decoration: none;
+  color: #ffffff; }
+
+a {
+  outline: none; }
+
+a img {
+  outline: none; }
+
+a:hover {
+  color: #1B3F8B;
+  -webkit-transition: color 0.4s ease, text-decoration 0.4s ease;
+  -moz-transition: color 0.4s ease, text-decoration 0.4s ease;
+  -o-transition: color 0.4s ease, text-decoration 0.4s ease;
+  -ms-transition: color 0.4s ease, text-decoration 0.4s ease;
+  transition: color 0.4s ease, text-decoration 0.4s ease; }
+
+img {
+  border: 0; }
+
+* {
+  box-sizing: border-box; }
+
+@font-face {
+  font-family: "LeagueGothic-Regular";
+  src: url("../fonts/LeagueGothic-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal; }
+@font-face {
+  font-family: "LeagueGothic-Italic";
+  src: url("../fonts/LeagueGothic-Italic.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal; }
+body {
+  color: #ffffff;
+  background: #DBDBDB;
+  font-family: Verdana, Helvetica, sans-serif, Arial; }
+
+#wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 95%;
+  padding-top: 30px; }
+  @media screen and (min-width: 480px) and (max-width: 980px) {
+    #wrapper {
+      width: 90%; } }
+  @media screen and (min-width: 980px) {
+    #wrapper {
+      width: 85%; } }
+
+#main {
+  height: 630px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  background: #9EAABB;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #9EAABB 0%, #DBDBDB 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9EAABB), color-stop(100%, #DBDBDB));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #9EAABB 0%, #DBDBDB 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #9EAABB 0%, #DBDBDB 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #9EAABB 0%, #DBDBDB 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #9EAABB 0%, #DBDBDB 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
+  /* IE6-9 */ }
+  @media screen and (min-width: 480px) and (max-width: 980px) {
+    #main {
+      height: 655px; } }
+  @media screen and (min-width: 980px) {
+    #main {
+      height: 680px; } }
+  #main .header {
+    text-align: center;
+    padding-top: 30px;
+    margin-bottom: 23px;
+    color: #ffffff;
+    font-size: 26px;
+    font-size: 2.6rem; }
+    @media screen and (min-width: 480px) and (max-width: 980px) {
+      #main .header {
+        font-size: 34px;
+        font-size: 3.4rem;
+        margin-bottom: 23px; } }
+    @media screen and (min-width: 980px) {
+      #main .header {
+        padding-top: 30px;
+        margin-bottom: 28px;
+        font-size: 40px;
+        font-size: 4rem; } }
+  #main .error-message {
+    display: none;
+    color: #cc0000;
+    font-size: 18px;
+    font-size: 1.8rem;
+    text-align: center; }
+    @media screen and (min-width: 480px) and (max-width: 980px) {
+      #main .error-message {
+        font-size: 25px;
+        font-size: 2.5rem; } }
+    @media screen and (min-width: 980px) {
+      #main .error-message {
+        font-size: 27px;
+        font-size: 2.7rem; } }
+
+.calculator-panel {
+  margin: 7px;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px; }
+  .calculator-panel__digits {
+    margin: 20px auto;
+    width: 90%;
+    height: 495px; }
+    @media screen and (min-width: 480px) and (max-width: 980px) {
+      .calculator-panel__digits {
+        position: relative;
+        height: 500px; } }
+    @media screen and (min-width: 980px) {
+      .calculator-panel__digits {
+        position: relative;
+        height: 515px; } }
+    .calculator-panel__digits .equal-button {
+      width: 100%; }
+      @media screen and (min-width: 480px) and (max-width: 980px) {
+        .calculator-panel__digits .equal-button {
+          width: 13.5%;
+          position: absolute;
+          right: -13.5%; } }
+    .calculator-panel__digits .calculator-display .display-result {
+      width: 100%;
+      margin: 0px;
+      border: 1px solid #000000;
+      background: #ffffff;
+      color: #000000;
+      text-align: right;
+      height: 55px;
+      font-size: 34px;
+      font-size: 3.4rem;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      padding: 10px; }
+    .calculator-panel__digits .calculator-display .visually-hidden {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px; }
+    .calculator-panel__digits button {
+      width: 33.3333%;
+      height: 40px;
+      border: 1px solid #9EAABB;
+      font-weight: bold;
+      font-size: 13px;
+      font-size: 1.3rem;
+      background: #b9b9b9;
+      font-family: Verdana, Helvetica, sans-serif, Arial; }
+      @media screen and (min-width: 480px) and (max-width: 980px) {
+        .calculator-panel__digits button {
+          height: 50px;
+          font-size: 17px;
+          font-size: 1.7rem; } }
+      @media screen and (min-width: 980px) {
+        .calculator-panel__digits button {
+          height: 60px;
+          font-size: 18px;
+          font-size: 1.8rem; } }
+    .calculator-panel__digits button:focus {
+      outline: 0; }
+    .calculator-panel__digits button:hover {
+      cursor: pointer; }
+    .calculator-panel__digits .numbers {
+      width: 100%;
+      padding-top: 20px;
+      position: relative;
+      font-size: 0; }
+      @media screen and (min-width: 480px) and (max-width: 980px) {
+        .calculator-panel__digits .numbers {
+          width: 88%; } }
+      @media screen and (min-width: 980px) {
+        .calculator-panel__digits .numbers {
+          width: 60%; } }
+      .calculator-panel__digits .numbers .penultimate {
+        display: block; }
+      .calculator-panel__digits .numbers .inner-box-functions {
+        position: absolute;
+        right: 0;
+        bottom: -40px;
+        width: 100%; }
+        @media screen and (min-width: 480px) and (max-width: 980px) {
+          .calculator-panel__digits .numbers .inner-box-functions {
+            bottom: 0px;
+            width: 66.6666%;
+            height: 100px; } }
+        @media screen and (min-width: 980px) {
+          .calculator-panel__digits .numbers .inner-box-functions {
+            bottom: -60px; } }
+        .calculator-panel__digits .numbers .inner-box-functions .save {
+          width: 60%; }
+          @media screen and (min-width: 480px) and (max-width: 980px) {
+            .calculator-panel__digits .numbers .inner-box-functions .save {
+              width: 50%; } }
+          @media screen and (min-width: 980px) {
+            .calculator-panel__digits .numbers .inner-box-functions .save {
+              width: 50%; } }
+        .calculator-panel__digits .numbers .inner-box-functions .cancel {
+          width: 40%; }
+          @media screen and (min-width: 480px) and (max-width: 980px) {
+            .calculator-panel__digits .numbers .inner-box-functions .cancel {
+              width: 50%; } }
+          @media screen and (min-width: 980px) {
+            .calculator-panel__digits .numbers .inner-box-functions .cancel {
+              width: 50%; } }
+        .calculator-panel__digits .numbers .inner-box-functions button {
+          width: 90px;
+          height: 40px; }
+          @media screen and (min-width: 480px) and (max-width: 980px) {
+            .calculator-panel__digits .numbers .inner-box-functions button {
+              height: 100px; } }
+          @media screen and (min-width: 980px) {
+            .calculator-panel__digits .numbers .inner-box-functions button {
+              height: 60px; } }
+      .calculator-panel__digits .numbers .inner-box-operators {
+        position: absolute;
+        right: 0;
+        bottom: 40px;
+        width: 66.6666%; }
+        @media screen and (min-width: 480px) and (max-width: 980px) {
+          .calculator-panel__digits .numbers .inner-box-operators {
+            position: absolute;
+            right: -20.9%;
+            bottom: 40px;
+            width: 20.9%;
+            bottom: 50px; } }
+        @media screen and (min-width: 980px) {
+          .calculator-panel__digits .numbers .inner-box-operators {
+            bottom: 60px; } }
+        .calculator-panel__digits .numbers .inner-box-operators button {
+          width: 50%; }
+          @media screen and (min-width: 480px) and (max-width: 980px) {
+            .calculator-panel__digits .numbers .inner-box-operators button {
+              width: 65%; } }
+    .calculator-panel__digits .saved-maths-box {
+      background: #9a9a9a;
+      height: 170px;
+      text-align: center;
+      padding-top: 45px;
+      overflow-y: auto; }
+      @media screen and (min-width: 480px) and (max-width: 980px) {
+        .calculator-panel__digits .saved-maths-box {
+          padding-top: 0; } }
+      @media screen and (min-width: 980px) {
+        .calculator-panel__digits .saved-maths-box {
+          position: absolute;
+          top: 75px;
+          right: 0;
+          width: 40%;
+          height: 420px;
+          padding-top: 0; } }
+      .calculator-panel__digits .saved-maths-box h2 {
+        padding-top: 40px;
+        font-size: 23px;
+        font-size: 2.3rem; }
+        @media screen and (min-width: 480px) and (max-width: 980px) {
+          .calculator-panel__digits .saved-maths-box h2 {
+            font-size: 30px;
+            font-size: 3rem; } }
+        @media screen and (min-width: 980px) {
+          .calculator-panel__digits .saved-maths-box h2 {
+            font-size: 31px;
+            font-size: 3.1rem; } }
+      @media screen and (min-width: 480px) and (max-width: 980px) {
+        .calculator-panel__digits .saved-maths-box__list {
+          padding-top: 5px; } }
+      @media screen and (min-width: 980px) {
+        .calculator-panel__digits .saved-maths-box__list {
+          padding-top: 10px; } }
+      .calculator-panel__digits .saved-maths-box__list li {
+        text-align: left;
+        margin: 0 8px;
+        border-bottom: 2px solid #102a3e;
+        white-space: nowrap; }
+        @media screen and (min-width: 480px) and (max-width: 980px) {
+          .calculator-panel__digits .saved-maths-box__list li {
+            font-size: 14px;
+            font-size: 1.4rem;
+            margin: 0 15px; } }
+        @media screen and (min-width: 980px) {
+          .calculator-panel__digits .saved-maths-box__list li {
+            font-size: 15px;
+            font-size: 1.5rem;
+            margin: 0 10px; } }
+        .calculator-panel__digits .saved-maths-box__list li .view-maths {
+          padding: 5px 15px 5px 0;
+          display: inline-block;
+          text-align: left;
+          width: 74%;
+          border-right: 2px solid #102a3e;
+          line-height: 23px; }
+          @media screen and (min-width: 480px) and (max-width: 980px) {
+            .calculator-panel__digits .saved-maths-box__list li .view-maths {
+              width: 76%;
+              padding: 7px 15px 7px 0; } }
+          @media screen and (min-width: 980px) {
+            .calculator-panel__digits .saved-maths-box__list li .view-maths {
+              width: 75%;
+              padding: 9px 15px 9px 0; } }
+        .calculator-panel__digits .saved-maths-box__list li .view-maths, .calculator-panel__digits .saved-maths-box__list li .delete-maths {
+          cursor: pointer;
+          white-space: normal;
+          vertical-align: middle; }
+        .calculator-panel__digits .saved-maths-box__list li .view-maths:hover, .calculator-panel__digits .saved-maths-box__list li .delete-maths:hover {
+          color: #1B3F8B;
+          -webkit-transition: color 0.4s ease, text-decoration 0.4s ease;
+          -moz-transition: color 0.4s ease, text-decoration 0.4s ease;
+          -o-transition: color 0.4s ease, text-decoration 0.4s ease;
+          -ms-transition: color 0.4s ease, text-decoration 0.4s ease;
+          transition: color 0.4s ease, text-decoration 0.4s ease; }
+        .calculator-panel__digits .saved-maths-box__list li .result-maths {
+          display: none; }
+        .calculator-panel__digits .saved-maths-box__list li .delete-maths {
+          display: inline-block;
+          text-align: center;
+          margin: 0 2%;
+          width: 23%; }
+          @media screen and (min-width: 480px) and (max-width: 980px) {
+            .calculator-panel__digits .saved-maths-box__list li .delete-maths {
+              width: 21%; } }
+      .calculator-panel__digits .saved-maths-box__list li:last-child {
+        border-bottom: 0; }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */ }
+  .modal__content {
+    background-color: #fefefe;
+    padding: 30px 17px 25px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 80%;
+    height: 230px;
+    overflow: auto;
+    margin: auto;
+    position: absolute; }
+    @media screen and (min-width: 480px) and (max-width: 980px) {
+      .modal__content {
+        height: 293px; } }
+    @media screen and (min-width: 980px) {
+      .modal__content {
+        width: 620px;
+        height: 298px; } }
+    .modal__content .modal-get-maths {
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid #000000;
+      padding-left: 10px;
+      height: 37px;
+      font-size: 13px;
+      font-size: 1.3rem;
+      -webkit-border-radius: 5px;
+      border-radius: 5px; }
+      @media screen and (min-width: 480px) and (max-width: 980px) {
+        .modal__content .modal-get-maths {
+          font-size: 20px;
+          font-size: 2rem;
+          margin-top: 20px;
+          height: 45px; } }
+      @media screen and (min-width: 980px) {
+        .modal__content .modal-get-maths {
+          font-size: 20px;
+          font-size: 2rem;
+          height: 50px;
+          margin-top: 22px; } }
+    .modal__content .modal-label {
+      color: #000000;
+      margin-top: 20px;
+      font-size: 18px;
+      font-size: 1.8rem;
+      display: block; }
+      @media screen and (min-width: 480px) and (max-width: 980px) {
+        .modal__content .modal-label {
+          font-size: 25px;
+          font-size: 2.5rem;
+          margin-top: 27px; } }
+      @media screen and (min-width: 980px) {
+        .modal__content .modal-label {
+          font-size: 30px;
+          font-size: 3rem;
+          margin-top: 15px; } }
+    .modal__content .modal-message {
+      color: #cc0000;
+      font-size: 14px;
+      font-size: 1.4rem;
+      padding-top: 10px;
+      display: none; }
+      @media screen and (min-width: 480px) and (max-width: 980px) {
+        .modal__content .modal-message {
+          font-size: 18px;
+          font-size: 1.8rem;
+          padding-top: 10px; } }
+      @media screen and (min-width: 980px) {
+        .modal__content .modal-message {
+          padding-top: 12px;
+          font-size: 20px;
+          font-size: 2rem; } }
+    .modal__content .modal-buttons {
+      position: absolute;
+      bottom: 20px; }
+      .modal__content .modal-buttons .button-submit, .modal__content .modal-buttons .button-cancel {
+        outline: 0; }
+        @media screen and (min-width: 480px) and (max-width: 980px) {
+          .modal__content .modal-buttons .button-submit, .modal__content .modal-buttons .button-cancel {
+            font-size: 14px;
+            font-size: 1.4rem; } }
+        @media screen and (min-width: 980px) {
+          .modal__content .modal-buttons .button-submit, .modal__content .modal-buttons .button-cancel {
+            font-size: 15px;
+            font-size: 1.5rem; } }
+      .modal__content .modal-buttons .button-submit {
+        margin-right: 15px; }
+        @media screen and (min-width: 480px) and (max-width: 980px) {
+          .modal__content .modal-buttons .button-submit {
+            margin-right: 30px; } }
+        @media screen and (min-width: 980px) {
+          .modal__content .modal-buttons .button-submit {
+            margin-right: 30px; } }
+    .modal__content .modal-close {
+      color: #FF6A42;
+      float: right;
+      font-size: 40px;
+      font-size: 4rem;
+      position: relative;
+      top: -30px;
+      right: 0px; }
+    .modal__content .modal-close:hover,
+    .modal__content .modal-close:focus {
+      color: #1B3F8B;
+      text-decoration: none;
+      cursor: pointer; }
+
+.btn, .modal__content .modal-buttons .button-submit, .modal__content .modal-buttons .button-cancel {
+  display: inline-block;
+  padding: .938em 1.875em;
+  border: .094em solid;
+  -webkit-border-radius: 0.625em;
+  border-radius: 0.625em;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  box-shadow: 0 0.375em 0.313em -0.313em rgba(0, 0, 0, 0.8), inset 0 0.063em #ffffff, inset 0 -0.188em rgba(0, 0, 0, 0.15);
+  font-weight: bold;
+  font-family: sans-serif, Verdana, Helvetica, Arial;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: 0 0.063em rgba(0, 0, 0, 0.3);
+  cursor: pointer; }
+  .btn--purple {
+    border-color: #673693;
+    background-color: #9A68C7; }
+    .btn--purple:hover {
+      background-color: #8b52bf;
+      box-shadow: 0 0.125em #ffffff, inset 0 0.063em #ffffff, inset 0 -0.188em #9f6fca; }
+    .btn--purple:active {
+      box-shadow: 0 0.063em #ffffff, inset 0 0 1.094em #331b48, inset 0 0.063em #673693, inset 0 -0.188em #673693; }
+  .btn--blue {
+    border-color: #1672a3;
+    background-color: #3BA9E4; }
+    .btn--blue:hover {
+      background-color: #209de0;
+      box-shadow: 0 0.125em #ffffff, inset 0 0.063em #ffffff, inset 0 -0.188em #44ade5; }
+    .btn--blue:active {
+      box-shadow: 0 0.063em #ffffff, inset 0 0 1.094em #0a3349, inset 0 0.063em #1672a3, inset 0 -0.188em #1672a3; }
+  .btn--green {
+    border-color: #446927;
+    background-color: #75B343; }
+    .btn--green:hover {
+      background-color: #669d3b;
+      box-shadow: 0 0.125em #ffffff, inset 0 0.063em #ffffff, inset 0 -0.188em #7aba46; }
+    .btn--green:active {
+      box-shadow: 0 0.063em #ffffff, inset 0 0 1.094em #141f0b, inset 0 0.063em #446927, inset 0 -0.188em #446927; }
+  .btn--orange {
+    border-color: #db2e00;
+    background-color: #FF6A42; }
+    .btn--orange:hover {
+      background-color: #ff5223;
+      box-shadow: 0 0.125em #ffffff, inset 0 0.063em #ffffff, inset 0 -0.188em #ff724c; }
+    .btn--orange:active {
+      box-shadow: 0 0.063em #ffffff, inset 0 0 1.094em #751900, inset 0 0.063em #db2e00, inset 0 -0.188em #db2e00; }
+  .btn--small {
+    font-size: 50%; }
+  .btn--medium {
+    font-size: 70%; }
+  .btn--large {
+    font-size: 90%; }
+
+form {
+  font-size: 1.2em;
+  width: 100%; }
+  form textarea {
+    display: block;
+    margin: 20px 0;
+    width: 100%;
+    height: 200px;
+    padding: 10px; }
+  form select {
+    padding: 13px;
+    -webkit-appearance: menulist-button;
+    height: 45px; }
+  form input {
+    /* Fix for Safari as it doesn't render well input search types */ }
+    form input[type="checkbox"], form input[type="radio"] {
+      display: none; }
+      form input[type="checkbox"] + label, form input[type="radio"] + label {
+        position: relative;
+        cursor: pointer;
+        vertical-align: middle; }
+      form input[type="checkbox"]:before, form input[type="radio"]:before {
+        content: "";
+        border: 1px solid gray;
+        background-color: white;
+        border-radius: 50%;
+        width: 17px;
+        height: 17px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px; }
+    form input[type="checkbox"] + label:before {
+      border-radius: 0;
+      margin-right: 10px; }
+    form input:checked + label:after {
+      content: "";
+      background-color: green;
+      border-radius: 50%;
+      width: 9px;
+      height: 9px;
+      position: absolute;
+      left: 5px;
+      top: 5px; }
+    form input[type="search"] {
+      -moz-appearance: none;
+      -webkit-appearance: none; }
+    form input[type="text"], form input[type="search"], form input[type="password"], form input[type="number"] {
+      padding: 13px;
+      border: solid 1px #a4a4a4; }
+
+h1 {
+  font-size: 36px;
+  font-size: 3.6rem;
+  line-height: 1.11111;
+  font-family: Verdana, Helvetica, sans-serif, Arial;
+  color: #ffffff;
+  margin-bottom: 15px; }
+
+h2 {
+  font-size: 30px;
+  font-size: 3rem;
+  line-height: 1.2;
+  font-family: Verdana, Helvetica, sans-serif, Arial;
+  color: #ffffff;
+  margin-bottom: 15px; }
+
+h3 {
+  font-size: 24px;
+  font-size: 2.4rem;
+  line-height: 1.25;
+  font-family: Verdana, Helvetica, sans-serif, Arial;
+  color: #ffffff;
+  margin-bottom: 15px; }
+
+p {
+  font-size: 15px;
+  font-size: 1.5rem;
+  line-height: 1.33333;
+  font-family: Verdana, Helvetica, sans-serif, Arial;
+  color: #ffffff;
+  margin-bottom: 10px; }
+
+/*# sourceMappingURL=main.css.map */
